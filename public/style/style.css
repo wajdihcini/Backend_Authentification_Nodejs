@@ -1,0 +1,86 @@
+/* Auth API page styling */
+:root {
+    --bg: #0b132b;
+    --surface: rgba(255, 255, 255, 0.08);
+    --surface-strong: rgba(255, 255, 255, 0.15);
+    --text: #f8f9fa;
+    --text-muted: #d0d3e1;
+    --accent: #4fd1c5;
+    --accent-strong: #22c55e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, rgba(79, 209, 197, 0.16), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 25%),
+                linear-gradient(180deg, #101828 0%, #0b132b 100%);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.18), transparent 18%),
+                radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.14), transparent 22%);
+    pointer-events: none;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+main,
+.container {
+    width: min(100%, 720px);
+    padding: 2.5rem 2rem;
+    border-radius: 28px;
+    background: var(--surface);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 44rem;
+    margin: 1.5rem auto 0;
+    text-align: center;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-strong);
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 1.25rem;
+    }
+
+    main,
+    .container {
+        padding: 1.75rem 1.25rem;
+    }
+}
