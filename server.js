@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const cors = require('cors'); 
 const corsOptions = require('./config/corsOptions');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 const PORT = process.env.PORT || 5000;
 
 connectDB();
@@ -21,9 +23,16 @@ app.use(express.json());
 // serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Swagger UI - accessible at /api-docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'Auth & n8n API Docs',
+}));
+
 app.use('/', require('./routes/root'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/users', require('./routes/usersRoutes'));
+app.use('/n8n', require('./routes/n8nRoutes'));
 
 app.use((req, res) => {
   res.status(404);
